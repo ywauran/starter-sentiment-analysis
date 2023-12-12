@@ -1,0 +1,141 @@
+export const dummyData = [
+  {
+    id: 1,
+    original: "Sianida sangat berbahaya bagi kesehatan manusia.",
+    lowercase: "sianida sangat berbahaya bagi kesehatan manusia.",
+    cleaning: "sianida sangat berbahaya bagi kesehatan manusia.",
+    tokenization: [
+      "sianida",
+      "sangat",
+      "berbahaya",
+      "bagi",
+      "kesehatan",
+      "manusia.",
+    ],
+    stopword: [
+      "sianida",
+      "sangat",
+      "berbahaya",
+      "bagi",
+      "kesehatan",
+      "manusia.",
+    ],
+    stemming: "sianida sangat berbahaya bagi kesehatan manusia.",
+    result: "sianida sangat berbahaya bagi kesehatan manusia.",
+    label: "negative",
+  },
+  {
+    id: 2,
+    original: "Apakah ada metode aman untuk menangani sianida?",
+    lowercase: "apakah ada metode aman untuk menangani sianida?",
+    cleaning: "apakah ada metode aman untuk menangani sianida?",
+    tokenization: [
+      "apakah",
+      "ada",
+      "metode",
+      "aman",
+      "untuk",
+      "menangani",
+      "sianida?",
+    ],
+    stopword: [
+      "apakah",
+      "ada",
+      "metode",
+      "aman",
+      "untuk",
+      "menangani",
+      "sianida?",
+    ],
+    stemming: "apakah ada metode aman untuk menangani sianida?",
+    result: "apakah ada metode aman untuk menangani sianida?",
+    label: "neutral",
+  },
+  {
+    id: 3,
+    original:
+      "Sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    lowercase:
+      "sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    cleaning:
+      "sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    tokenization: [
+      "sianida",
+      "digunakan",
+      "dalam",
+      "beberapa",
+      "industri",
+      "sebagai",
+      "zat",
+      "kimia",
+      "penting.",
+    ],
+    stopword: [
+      "sianida",
+      "digunakan",
+      "dalam",
+      "beberapa",
+      "industri",
+      "sebagai",
+      "zat",
+      "kimia",
+      "penting.",
+    ],
+    stemming:
+      "sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    result:
+      "sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    label: "positive",
+  },
+  {
+    id: 4,
+    original: "Akuntan Sianida",
+    lowercase: "akuntan sianida",
+    cleaning: "akuntan sianida",
+    tokenization: ["akuntan", "sianida"],
+    stopword: ["akuntan", "sianida"],
+    stemming: "akuntan sianida",
+    result: "akuntan sianida",
+    label: "neutral",
+  },
+  {
+    id: 5,
+    original: "Analisis Sianida",
+    lowercase: "analisis sianida",
+    cleaning: "analisis sianida",
+    tokenization: ["analisis", "sianida"],
+    stopword: ["analisis", "sianida"],
+    stemming: "analisis sianida",
+    result: "analisis sianida",
+    label: "positive",
+  },
+];
+
+export const dummyCommentData = [
+  {
+    id: 1,
+    comment: "Sianida sangat berbahaya bagi kesehatan manusia.",
+    label: "negative",
+  },
+  {
+    id: 2,
+    comment: "Apakah ada metode aman untuk menangani sianida?",
+    label: "neutral",
+  },
+  {
+    id: 3,
+    comment:
+      "Sianida digunakan dalam beberapa industri sebagai zat kimia penting.",
+    label: "positive",
+  },
+  {
+    id: 4,
+    comment: "Penting untuk memahami risiko sianida dalam proses industri.",
+    label: "neutral",
+  },
+  {
+    id: 5,
+    comment: "Saya tidak yakin apakah sianida aman digunakan dalam makanan.",
+    label: "negative",
+  },
+];
