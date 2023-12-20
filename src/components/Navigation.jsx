@@ -6,7 +6,7 @@ const Navigation = () => {
   const navItems = [
     {
       to: "/",
-      label: "Komentar",
+      label: "Comment",
       className: "bg-blue-700",
     },
     {

@@ -1,8 +1,34 @@
-import { dummyData } from "../utils/data";
-import Pagination from "../components/pagination/Pagination";
+import { useState } from "react";
+import { useProcessedDataContext } from "../context/ProcessedDataContext.jsx";
+import { useResultContext } from "../context/ResultContext.jsx";
+import axios from "axios";
+
 const Proessing = () => {
+  const { processedData } = useProcessedDataContext();
+  const { setResultState } = useResultContext();
+  const [loading, setLoading] = useState(false);
+  const handleProcess = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://192.168.97.142:81/calculate",
+        processedData.df_stemming
+      );
+      setResultState(response.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
+      {loading ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <span className="loading loading-spinner loading-md"></span>
+        </div>
+      ) : null}
       <div className="flex items-center justify-center">
         <div className="relative pt-2 mx-auto text-gray-600">
           <input
@@ -36,34 +62,33 @@ const Proessing = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Original</th>
-              <th>Lowercase</th>
-              <th>Cleaning</th>
-              <th>Tokenization</th>
-              <th>Stopword</th>
-              <th>Stemming</th>
               <th>Result</th>
               <th>Label</th>
             </tr>
           </thead>
           <tbody>
-            {dummyData.map((data) => (
-              <tr key={data.id}>
-                <th>{data.id}</th>
-                <td>{data.original}</td>
-                <td>{data.lowercase}</td>
-                <td>{data.cleaning}</td>
-                <td>{data.tokenization.join(", ")}</td>
-                <td>{data.stopword.join(", ")}</td>
-                <td>{data.stemming}</td>
-                <td>{data.result}</td>
-                <td>{data.label}</td>
-              </tr>
-            ))}
+            {processedData.length !== 0 &&
+              processedData.df_cleaning.map((data, index) => (
+                <tr key={index}>
+                  <th>{index + 1}</th>
+                  <td>{processedData.df_stemming[index].comment}</td>
+                  <td>{data.label}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <div className="flex justify-end mt-4">
-          <Pagination />
+          <button
+            className="btn btn-primary"
+            onClick={(e) => handleProcess(e)}
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Submit"
+            )}
+          </button>
         </div>
       </div>
     </>
