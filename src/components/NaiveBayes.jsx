@@ -17,6 +17,9 @@ const NaiveBayes = () => {
             <tr>
               <th>Partition</th>
               <th>Naive Bayes Confusion Matrix</th>
+              <th>Accuracy</th>
+              <th>Precision</th>
+              <th>Recall</th>
               <th>Train Samples</th>
               <th>Test Samples</th>
             </tr>
@@ -41,6 +44,9 @@ const NaiveBayes = () => {
                     ))}
                   </table>
                 </td>
+                <td>{data.nb_accuracy}</td>
+                <td>{data.nb_precision}</td>
+                <td>{data.nb_recall}</td>
                 <td>{data.train_samples}</td>
                 <td>{data.test_samples}</td>
               </tr>

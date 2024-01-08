@@ -12,7 +12,7 @@ const Proessing = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.97.142:81/calculate",
+        "http://192.168.1.10:81/calculate",
         processedData.df_stemming
       );
       setResultState(response.data);
@@ -71,25 +71,12 @@ const Proessing = () => {
               processedData.df_cleaning.map((data, index) => (
                 <tr key={index}>
                   <th>{index + 1}</th>
-                  <td>{processedData.df_stemming[index].comment}</td>
-                  <td>{data.label}</td>
+                  <td>{processedData.df_stemming[index + 30].comment}</td>
+                  <td>{processedData.df_stemming[index + 30].label}</td>
                 </tr>
               ))}
           </tbody>
         </table>
-        <div className="flex justify-end mt-4">
-          <button
-            className="btn btn-primary"
-            onClick={(e) => handleProcess(e)}
-            disabled={loading}
-          >
-            {loading ? (
-              <span className="loading loading-spinner loading-md"></span>
-            ) : (
-              "Submit"
-            )}
-          </button>
-        </div>
       </div>
     </>
   );

@@ -34,7 +34,7 @@ const Comment = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://192.168.97.142:81/preprocess",
+        "http://192.168.96.142:81/preprocess",
         commentData
       );
       setProcessedData(response.data);
@@ -54,6 +54,11 @@ const Comment = () => {
 
   return (
     <>
+      {loading ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <span className="loading loading-spinner loading-md"></span>
+        </div>
+      ) : null}
       <div className="flex items-center justify-center w-full bg-white">
         <label className="flex flex-col items-center w-64 px-4 py-6 tracking-wide uppercase bg-white border rounded-lg shadow-lg cursor-pointer text-blue border-blue hover:bg-blue hover:text-slate-300">
           <svg
@@ -73,47 +78,49 @@ const Comment = () => {
           />
         </label>
       </div>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table table-zebra">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Comment</th>
-                <th>Label</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map((row, index) => (
-                <tr key={index}>
-                  <td></td>
-                  {Object.values(row).map((value, index) => (
-                    <td key={index}>{value}</td>
-                  ))}
+      {commentData.length !== 0 ? (
+        <div>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Comment</th>
+                  <th>Label</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="flex justify-between mt-4">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={Math.ceil(commentData.length / itemsPerPage)}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
-            <button
-              className="btn btn-primary"
-              onClick={(e) => handleProprocess(e)}
-              disabled={loading}
-            >
-              {loading ? (
-                <span className="loading loading-spinner loading-md"></span>
-              ) : (
-                "Submit"
-              )}
-            </button>
+              </thead>
+              <tbody>
+                {currentItems.map((row, index) => (
+                  <tr key={index}>
+                    <td></td>
+                    {Object.values(row).map((value, index) => (
+                      <td key={index}>{value}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="flex justify-between mt-4">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={Math.ceil(commentData.length / itemsPerPage)}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+              <button
+                className="btn btn-primary"
+                onClick={(e) => handleProprocess(e)}
+                disabled={loading}
+              >
+                {loading ? (
+                  <span className="loading loading-spinner loading-md"></span>
+                ) : (
+                  "Submit"
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };

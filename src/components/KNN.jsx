@@ -16,6 +16,9 @@ const KNN = () => {
             <tr>
               <th>Partition</th>
               <th>KNN Confusion Matrix</th>
+              <th>Accuracy</th>
+              <th>Precision</th>
+              <th>Recall</th>
               <th>Train Samples</th>
               <th>Test Samples</th>
             </tr>
@@ -40,6 +43,9 @@ const KNN = () => {
                     ))}
                   </table>
                 </td>
+                <td>{data.knn_accuracy}</td>
+                <td>{data.knn_precision}</td>
+                <td>{data.knn_recall}</td>
                 <td>{data.train_samples}</td>
                 <td>{data.test_samples}</td>
               </tr>
